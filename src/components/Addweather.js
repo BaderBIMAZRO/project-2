@@ -9,10 +9,10 @@ export default class Addweather extends React.Component{
     
 
     render(){
-        return(<div>
+        return(<div className="Addweather">
         <input type="text" onChange={e => this.props.handleCity(e)}></input>
         <button onClick={()=> this.props.getWeatherData()}>Enter City</button>
-        <WeatherContainer  weather={this.props.weather} />
+        <WeatherContainer  weather={this.props.weather} deleteList={this.props.deleteList}/>
            
            
             </div>)
