@@ -12,7 +12,8 @@ export default class App extends React.Component {
       api_key: 'eb5bd4d86c7e903cafc2a54851c97a11',
       weather: [],
       city: "Riyadh",
-      newCity: ""
+      newCity: "",
+      
     };
   }
   getWeatherData = () => {
@@ -26,24 +27,37 @@ export default class App extends React.Component {
     });
   };
 
+  deleteList =(index)=>{
+      console.log("delete button");
+      const deletebtn = Object.assign([],this.state.weather);
+      deletebtn.splice(index,1);
+      this.setState({weather:deletebtn}) 
+  }
+
   handleCity = e => {
     this.setState({ city: e.target.value });
   };
 
+ 
+ 
+
   render() {
+     
    
     // console.log(WDATA.access_key)
      
     //console.log(this.state.weather)
 console.log(this.state.weather)
-    return (<div>
+    return (<div className="App">
         <h1>Weather data</h1>
         <Addweather
           city={this.state.city}
           handleCity={this.handleCity}
           getWeatherData={this.getWeatherData}
           weather={this.state.weather}
+          deleteList={this.deleteList}
         />
+  
       </div>
     );
   }
