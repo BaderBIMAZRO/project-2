@@ -1,6 +1,7 @@
 import React from "react";
 import Addweather from "./components/Addweather";
 import './App.css';
+import ReactModal from 'react-modal';
 
 import axios from "axios";
 //http://api.openweathermap.org/data/2.5/weather?units=metric&q=riyadh&appid=eb5bd4d86c7e903cafc2a54851c97a11
@@ -76,7 +77,7 @@ export default class App extends React.Component {
 console.log(this.state.weather)
     return (<div className="App">
      
-        <h1><i class="material-icons icon">brightness_7</i>Weather Applicaton</h1>
+        <h1><i className="material-icons icon">brightness_7</i>Weather Applicaton</h1>
         
         <Addweather
           city={this.state.city}
