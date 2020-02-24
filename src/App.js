@@ -42,7 +42,6 @@ export default class App extends React.Component {
   };
 
   handleUpdateEvent = e => {
-    console.log(this.state.newCity)
     this.setState({ newCity: e.target.value });
    
   };
@@ -59,16 +58,12 @@ export default class App extends React.Component {
       url: url
     }).then(response => {
       console.log(response)
-   // updateData[id].name = 
-    // updateData[id] = [...updateData,{cityTemp:response.data.main.temp, name:response.data.name}]
+   
      updateData[id].name = response.data.name;
      updateData[id].cityTemp=response.data.main.temp;
     this.setState({weather:updateData})
   });
-    console.log(this.state.weather)
-
-    // })
-
+   
   }
  
 
@@ -80,7 +75,9 @@ export default class App extends React.Component {
     //console.log(this.state.weather)
 console.log(this.state.weather)
     return (<div className="App">
-        <h1>Weather data</h1>
+     
+        <h1><i class="material-icons icon">brightness_7</i>Weather Applicaton</h1>
+        
         <Addweather
           city={this.state.city}
 

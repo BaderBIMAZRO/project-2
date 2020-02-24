@@ -1,21 +1,63 @@
-
-h1{
-  text-align: center;
-  font-family: 'Courier New', Courier, monospace;
+body{
+  background-color:#608094;
+}
+.icon{
+  color: #FFFFFF;
+  width: 50px;
+  font-size: 30px;
 }
 
+h1 {
+  text-align: center;
+  color: rgb(177, 211, 26);
+  font-family: 'Courier New', Courier, monospace;
+}
+.input-style{
+  padding: 5px 5px;
+  margin: 0 10px;
+  border: 4px solid #16394c ;
+  border-radius: 5px;
+}
+.btn-1{
+  border: 2px solid #16394c;
+  width: 100px;
+  background-color: yellow;
+  font-size: 15px;
+  font-weight: 800;
+  border-radius: 10px;
+ 
+}
 .Addweather{
   text-align: center;
 }
 .container{
   margin: 20px 20px;
   text-align: none;
-  border: 2px solid red
+  border: 2px solid black
 }
-.item{
-  border: 2px solid blue
+.temp{
+  font-size: 30px;
+  font-weight: 500;
 }
+.city-name{
+  font-size: 20px;
+  font-weight:200;
+}
+
 .list-style{
-  margin: 30px 30px;
-  border: 1px solid blue;
+  color: #FFFFFF;
+    height: 300px;
+    width: 500px;
+    float: left;
+    margin: 20px 20px;
+    border-radius: 10px;
+    border: 4px solid #608094;
+    background: #16394c;
+}
+.Star{
+  color: yellow;
+}
+.delete{
+  padding: 20px 20px;
+  color: red;
 }

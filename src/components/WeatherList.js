@@ -18,13 +18,14 @@ updateList=(id)=>{
     
     return (
       <div className="list-style">
-  <p>City {this.props.city.name}</p>
-  <p>temp {this.props.city.cityTemp}</p>
-         
- <button onClick={()=> this.props.deleteList()}>Delete</button>
+  <p className="city-name"> {this.props.city.name}</p>
+  <p className="temp"> {this.props.city.cityTemp}°c</p>
+        <div>
         <Mark/>
-        <input type="text" onChange={e => this.props.handleUpdateEvent(e)}></input>
-         <button onClick={()=>this.updateList(this.props.index)}>Update</button> 
+        <input className="input-style" type="text" onChange={e => this.props.handleUpdateEvent(e)}></input>
+         <button className="btn-1" onClick={()=>this.updateList(this.props.index)}>Update</button> 
+         </div>
+         <i onClick={()=> this.props.deleteList()} className="material-icons delete">delete_forever</i>
      </div>
     );
     
