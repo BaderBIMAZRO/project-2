@@ -11,8 +11,9 @@ export default class App extends React.Component {
     this.state = {
       api_key: 'eb5bd4d86c7e903cafc2a54851c97a11',
       weather: [],
-      city: "Riyadh",
-      newCity: "",
+      name: "",
+    
+
       
     };
   }
@@ -27,6 +28,8 @@ export default class App extends React.Component {
     });
   };
 
+ // [...this.state.weather,{cityTemp:response.data.main.temp, name:response.data.name}]
+
   deleteList =(index)=>{
       console.log("delete button");
       const deletebtn = Object.assign([],this.state.weather);
@@ -38,7 +41,35 @@ export default class App extends React.Component {
     this.setState({ city: e.target.value });
   };
 
+  handleUpdateEvent = e => {
+    console.log(this.state.newCity)
+    this.setState({ newCity: e.target.value });
+   
+  };
+
  
+  handleUpdate=(id)=>{
+      console.log(id)
+    console.log("App clicked")
+    // this.setState({ cityTemp:"Update"
+    const updateData = Object.assign([], this.state.weather);
+    const url = `http://api.openweathermap.org/data/2.5/weather?units=metric&q=${this.state.newCity}&appid=${this.state.api_key}`;
+    axios({
+      methos: "GET",
+      url: url
+    }).then(response => {
+      console.log(response)
+   // updateData[id].name = 
+    // updateData[id] = [...updateData,{cityTemp:response.data.main.temp, name:response.data.name}]
+     updateData[id].name = response.data.name;
+     updateData[id].cityTemp=response.data.main.temp;
+    this.setState({weather:updateData})
+  });
+    console.log(this.state.weather)
+
+    // })
+
+  }
  
 
   render() {
@@ -52,10 +83,15 @@ console.log(this.state.weather)
         <h1>Weather data</h1>
         <Addweather
           city={this.state.city}
+
           handleCity={this.handleCity}
+          handleUpdate={this.handleUpdate}
+
+          handleUpdateEvent={this.handleUpdateEvent}
           getWeatherData={this.getWeatherData}
           weather={this.state.weather}
           deleteList={this.deleteList}
+          OnUpdate={this.handleUpdate}
         />
   
       </div>

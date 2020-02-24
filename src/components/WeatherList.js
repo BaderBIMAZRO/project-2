@@ -1,27 +1,30 @@
 import React from "react";
+import Mark from './Mark'
 
 export default class WeatherList extends React.Component {
-    constructor(props){
-        super(props);
-        this.state={
-            isStar: false,
-        }
-    }
+    
+    
 
-    handleStar=()=>{
-        console.log("star click")
-        this.setState({isStar:!this.state.isStar})
-      }
+updateList=(id)=>{
+    // console.log("upadte clicked")
+    
+    this.props.handleUpdate(id);
+    // this.props.city[index].name="Update";
+    // this.props.city[index].cityTemp="Update";
+
+}
+    
   render() {
-    const isStar = this.state.isStar ? "star": "star_border";
+    
     return (
-      <div>
+      <div className="list-style">
   <p>City {this.props.city.name}</p>
   <p>temp {this.props.city.cityTemp}</p>
          
-         <button onClick={()=> this.props.deleteList()}>Delete</button>
-         <div><i onClick={this.handleStar } className="material-icons">{isStar}</i></div>
-         {/* <button onClick={()=>this.props.updateList()}>Update</button> */}
+ <button onClick={()=> this.props.deleteList()}>Delete</button>
+        <Mark/>
+        <input type="text" onChange={e => this.props.handleUpdateEvent(e)}></input>
+         <button onClick={()=>this.updateList(this.props.index)}>Update</button> 
      </div>
     );
     
