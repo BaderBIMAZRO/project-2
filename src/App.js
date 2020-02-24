@@ -31,11 +31,11 @@ export default class App extends React.Component {
 
  // [...this.state.weather,{cityTemp:response.data.main.temp, name:response.data.name}]
 
-  deleteList =(index)=>{
+  deleteList =(id)=>{
       console.log("delete button");
-      const deletebtn = Object.assign([],this.state.weather);
-      deletebtn.splice(index,1);
-      this.setState({weather:deletebtn}) 
+      const deleteBtn = Object.assign([],this.state.weather);
+      deleteBtn.splice(id,1);
+      this.setState({weather:deleteBtn}) 
   }
 
   handleCity = e => {
@@ -81,10 +81,8 @@ console.log(this.state.weather)
         
         <Addweather
           city={this.state.city}
-
           handleCity={this.handleCity}
           handleUpdate={this.handleUpdate}
-
           handleUpdateEvent={this.handleUpdateEvent}
           getWeatherData={this.getWeatherData}
           weather={this.state.weather}

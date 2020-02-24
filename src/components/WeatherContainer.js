@@ -13,7 +13,12 @@ export default class WeatherContainer extends React.Component{
         return(
         <div className="container">
              {this.props.weather.map((item, index)=> {
-          return <WeatherList key={index} index={index} city={item} deleteList={this.props.deleteList}  OnUpdate={this.props.OnUpdate} handleUpdate={this.props.handleUpdate} handleUpdateEvent ={this.props.handleUpdateEvent}/> 
+          return <WeatherList key={index} 
+           index={index} city={item} 
+           deleteList={this.props.deleteList} 
+           OnUpdate={this.props.OnUpdate} 
+           handleUpdate={this.props.handleUpdate} 
+           handleUpdateEvent ={this.props.handleUpdateEvent}/> 
              })}
              </div>
         )
