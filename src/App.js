@@ -1,7 +1,7 @@
 import React from "react";
 import Addweather from "./components/Addweather";
-import './App.css';
-import ReactModal from 'react-modal';
+import "./App.css";
+import ReactModal from "react-modal";
 
 import axios from "axios";
 //http://api.openweathermap.org/data/2.5/weather?units=metric&q=riyadh&appid=eb5bd4d86c7e903cafc2a54851c97a11
@@ -9,77 +9,109 @@ import axios from "axios";
 export default class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      api_key: 'eb5bd4d86c7e903cafc2a54851c97a11',
-      weather: [],
-      name: "",
-    
+    this.api_key = "eb5bd4d86c7e903cafc2a54851c97a11";
 
-      
+    this.state = {
+      weather: [],
+      star: [],
     };
   }
+  
+  // get api data to weather and fave state
   getWeatherData = () => {
-    const url = `http://api.openweathermap.org/data/2.5/weather?units=metric&q=${this.state.city}&appid=${this.state.api_key}`;
+    const url = `http://api.openweathermap.org/data/2.5/weather?units=metric&q=${this.state.city}&appid=${this.api_key}`;
     axios({
       methos: "GET",
       url: url
     }).then(response => {
-      console.log(response);
-      this.setState({weather:[...this.state.weather,{cityTemp:response.data.main.temp, name:response.data.name}]})
+      this.setState({
+        weather: [
+          ...this.state.weather,
+          {
+            cityTemp: response.data.main.temp,
+            name: response.data.name,
+            isStar: false
+          }
+        ]
+      });
     });
   };
 
- // [...this.state.weather,{cityTemp:response.data.main.temp, name:response.data.name}]
+  // delete function for specific item
 
-  deleteList =(id)=>{
-      console.log("delete button");
-      const deleteBtn = Object.assign([],this.state.weather);
-      deleteBtn.splice(id,1);
-      this.setState({weather:deleteBtn}) 
+  deleteList = id => {
+    
+    const deleteBtn = Object.assign([], this.state.weather);
+    deleteBtn.splice(id, 1);
+    this.setState({ weather: deleteBtn });
+  };
+
+  deleteAll =()=>{
+    console.log("delete all")
+    this.setState({weather:[]})
   }
 
+
+  // get the input from input  value that's on top  
   handleCity = e => {
     this.setState({ city: e.target.value });
   };
 
+  // get the input from the modal that's inside modal pop up for updating city api
   handleUpdateEvent = e => {
     this.setState({ newCity: e.target.value });
-   
   };
 
- 
-  handleUpdate=(id)=>{
-      console.log(id)
-    console.log("App clicked")
-    // this.setState({ cityTemp:"Update"
+  // get api that has been set by newCity
+  handleUpdate = id => {
+    
     const updateData = Object.assign([], this.state.weather);
-    const url = `http://api.openweathermap.org/data/2.5/weather?units=metric&q=${this.state.newCity}&appid=${this.state.api_key}`;
+    const url = `http://api.openweathermap.org/data/2.5/weather?units=metric&q=${this.state.newCity}&appid=${this.api_key}`;
     axios({
       methos: "GET",
       url: url
     }).then(response => {
-      console.log(response)
-   
-     updateData[id].name = response.data.name;
-     updateData[id].cityTemp=response.data.main.temp;
-    this.setState({weather:updateData})
-  });
-   
-  }
- 
+     
+
+      updateData[id].name = response.data.name;
+      updateData[id].cityTemp = response.data.main.temp;
+      this.setState({ weather: updateData });
+    });
+  };
+
+  // this set the functoinality of the isStar to move the item on top of the other elements from weather array
+  handleStar = id => {
+  
+    const newWeather = [...this.state.weather];
+    console.log(newWeather, "handle star");
+    newWeather[id].isStar = !this.state.weather[id].isStar;
+
+    this.setState({
+      weather: newWeather
+    });
+    console.log(this.state.weather);
+
+    console.log("clicked");
+    const star = [...this.state.star];
+    star.push({
+      cityTemp: this.state.weather[id].cityTemp,
+      name: this.state.weather[id].name
+    });
+
+  };
+
 
   render() {
-     
-   
-    // console.log(WDATA.access_key)
-     
-    //console.log(this.state.weather)
-console.log(this.state.weather)
-    return (<div className="App">
-     
-        <h1><i className="material-icons icon">brightness_7</i>Weather Applicaton</h1>
-        
+    
+    console.log(this.state.weather);
+    return (
+      <div className="App">
+        <h1>
+          <i className="material-icons icon">brightness_7</i>Weather Applicaton
+        </h1>
+
         <Addweather
+          isStar={this.state.isStar}
           city={this.state.city}
           handleCity={this.handleCity}
           handleUpdate={this.handleUpdate}
@@ -88,8 +120,9 @@ console.log(this.state.weather)
           weather={this.state.weather}
           deleteList={this.deleteList}
           OnUpdate={this.handleUpdate}
+          handleStar={this.handleStar}
+          deleteAll={this.deleteAll}
         />
-  
       </div>
     );
   }
