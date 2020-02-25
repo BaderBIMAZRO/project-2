@@ -10,7 +10,7 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.api_key = "eb5bd4d86c7e903cafc2a54851c97a11";
-
+    this.unfaveClear=[];
     this.state = {
       weather: [],
       star: [],
@@ -49,6 +49,21 @@ export default class App extends React.Component {
   deleteAll =()=>{
     console.log("delete all")
     this.setState({weather:[]})
+  }
+
+  clearUnfave=()=>{
+    this.unfaveClear=[];
+    console.log("Unfave button")
+    this.state.weather.map((item,index)=>{
+      item.key=index
+      if (item.isStar) {
+        this.unfaveClear.push(item);
+        console.log(this.unfaveClear)
+      } 
+      
+    });
+    this.setState({weather:this.unfaveClear})
+  console.log(this.unfaveClear)    
   }
 
 
@@ -122,6 +137,7 @@ export default class App extends React.Component {
           OnUpdate={this.handleUpdate}
           handleStar={this.handleStar}
           deleteAll={this.deleteAll}
+          clearUnfave={this.clearUnfave}
         />
       </div>
     );
