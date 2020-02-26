@@ -15,12 +15,8 @@ export default class Mark extends React.Component {
     return (
       <div>
         <div>
-          <i
-            onClick={() => this.toggleStar(this.props.index)}
-            className="material-icons Star"
-          >
-            {isStar}
-          </i>
+          <i onClick={() => this.toggleStar(this.props.index)}
+            className="material-icons Star">{isStar}</i>
         </div>
       </div>
     );

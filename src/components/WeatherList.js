@@ -40,32 +40,22 @@ export default class WeatherList extends React.Component {
             isStar={this.props.city.isStar}
           />
           {/* {this is where Edit Modal code is} */}
-          <button className="btn-1" onClick={this.handleOpenModal}>
-            Edit
-          </button>
+          <button className="btn-1" onClick={this.handleOpenModal}>Edit</button>
+
           <ReactModal isOpen={this.state.show} className="modal">
-            <h1>Update City</h1>
-            <input
-              className="input-style"
-              type="text"
-              onChange={e => this.props.handleUpdateEvent(e)}
-            ></input>
-            <button
-              className="btn-1"
-              onClick={() => this.updateList(this.props.index)}
-            >
-              Update
-            </button>
+                <h1>Update City</h1>
+        <input className="input-style" type="text"
+              onChange={e => this.props.handleUpdateEvent(e)}></input>
+
+            <button className="btn-1"
+              onClick={() => this.updateList(this.props.index)}>Update</button>
 
             <div>
-              <button className="close-btn" onClick={this.handleCloseModal}>
-                Close
-              </button>
+              <button className="close-btn" onClick={this.handleCloseModal}>Close</button>
             </div>
           </ReactModal>
         </div>
-        <i
-          onClick={() => this.props.deleteList(this.props.index)}
+        <i onClick={() => this.props.deleteList(this.props.index)}
           className="material-icons delete">delete_forever</i>
       </div>
       </div>
