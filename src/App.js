@@ -11,6 +11,7 @@ export default class App extends React.Component {
     super(props);
     this.api_key = "eb5bd4d86c7e903cafc2a54851c97a11";
     this.unfaveClear=[];
+
     this.state = {
       weather: [],
       star: [],
@@ -58,12 +59,10 @@ export default class App extends React.Component {
       item.key=index
       if (item.isStar) {
         this.unfaveClear.push(item);
-        console.log(this.unfaveClear)
       } 
       
     });
     this.setState({weather:this.unfaveClear})
-  console.log(this.unfaveClear)    
   }
 
 
@@ -103,14 +102,6 @@ export default class App extends React.Component {
 
     this.setState({
       weather: newWeather
-    });
-    console.log(this.state.weather);
-
-    console.log("clicked");
-    const star = [...this.state.star];
-    star.push({
-      cityTemp: this.state.weather[id].cityTemp,
-      name: this.state.weather[id].name
     });
 
   };
