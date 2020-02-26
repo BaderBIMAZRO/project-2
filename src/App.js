@@ -20,7 +20,7 @@ export default class App extends React.Component {
   
   // get api data to weather and fave state
   getWeatherData = () => {
-    const url = `http://api.openweathermap.org/data/2.5/weather?units=metric&q=${this.state.city}&appid=${this.api_key}`;
+    const url = `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?units=metric&q=${this.state.city}&appid=${this.api_key}`;
     axios({
       methos: "GET",
       url: url
@@ -80,7 +80,7 @@ export default class App extends React.Component {
   handleUpdate = id => {
     
     const updateData = Object.assign([], this.state.weather);
-    const url = `http://api.openweathermap.org/data/2.5/weather?units=metric&q=${this.state.newCity}&appid=${this.api_key}`;
+    const url = `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?units=metric&q=${this.state.newCity}&appid=${this.api_key}`;
     axios({
       methos: "GET",
       url: url
