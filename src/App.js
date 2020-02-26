@@ -1,7 +1,7 @@
 import React from "react";
 import Addweather from "./components/Addweather";
 import "./App.css";
-import ReactModal from "react-modal";
+
 
 import axios from "axios";
 //http://api.openweathermap.org/data/2.5/weather?units=metric&q=riyadh&appid=eb5bd4d86c7e903cafc2a54851c97a11
