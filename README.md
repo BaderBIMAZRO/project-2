@@ -11,11 +11,11 @@ Weather app where you enter any city in search box to get weather information.
 
 * User want to be able to mark Favorite item in list and show it on top of other weather list
 
-* User want to be able to delete waether item from list 
+* User want to be able to delete weather item from list 
 
-* User want to be able to edit wather item in list
+* User want to be able to edit weather item in list
 
-* User want to be able to delete all waether list items
+* User want to be able to delete all weather list items
 
 * User want to be able to clear unfavorite weather items
 
