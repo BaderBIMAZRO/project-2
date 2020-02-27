@@ -7,17 +7,17 @@ Weather app where you enter any city in search box to get weather information.
 
 ## User storie
 
-* User want to be able to add item in list 
+* User want to be able to add weather item in list 
 
-* User want to be able to mark Favorite item in list and show it on top of list
+* User want to be able to mark Favorite item in list and show it on top of other weather list
 
-* User want to be able to delete item from list 
+* User want to be able to delete waether item from list 
 
-* User want to be able to edit item in list
+* User want to be able to edit wather item in list
 
-* User want to be able to delete all list items
+* User want to be able to delete all waether list items
 
-* User want to be able to clear unfavorite items
+* User want to be able to clear unfavorite weather items
 
 ## Technologies Used
 
@@ -25,10 +25,18 @@ Weather app where you enter any city in search box to get weather information.
 * React Modal
 * Axios Api
 * CSS
+* developer tool
+
+## Future Work
+
+* Add User Sign Up, Sign In, and Sign Out firebase and react authentication.
+* Save the data to localStorage or an API
+
 
 ## Helpful Resouces
 
 * React Documentation
 * Array.prototype.map() MDN Docs.
 * Axios Docs.
+
 
